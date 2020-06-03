@@ -39,6 +39,7 @@ fn main() {
 			}
 			"client" => {
 				//TODO: call TCP client
+				udp_client::communicate(address).unwrap_or_else(|e| error!("{}", e));
 			}
 			_ => {
 				missing_role();
