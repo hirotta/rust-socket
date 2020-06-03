@@ -9,8 +9,8 @@ mod udp_server;
 
 fn main() {
 	env::set_var("RUST_LOG", "debug");
-
 	env_logger::init();
+
 	let args: Vec<String> = env::args().collect();
 	if args.len() != 4 {
 		error!("Please specify [tcp|udp] [server|client] [addr:port].");
@@ -23,6 +23,7 @@ fn main() {
 		"tcp" => match role {
 			"server" => {
 				//TODO: call TCP server
+				tcp_server::serve(address).unwrap_or_else(|e| error!("{}", e));
 			}
 			"client" => {
 				//TODO: call TCP client
