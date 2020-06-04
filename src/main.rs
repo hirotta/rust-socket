@@ -36,6 +36,7 @@ fn main() {
 		"udp" => match role {
 			"server" => {
 				//TODO: call TCP server
+				udp_server::serve(address).unwrap_or_else(|e| error!("{}", e));
 			}
 			"client" => {
 				//TODO: call TCP client
